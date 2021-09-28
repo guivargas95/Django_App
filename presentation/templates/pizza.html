@@ -5,6 +5,27 @@
 {% include 'partials/header.html' %}
 
 <main>
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                {% if pizzas %}
+                {% for pizza in pizzas %}
+                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="{% static 'img/foto_receita.png' %}" alt="">
+                        <div class="receipe-content">
+                                <h5>{{ pizza.nome_pizza }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
 
     {% include 'partials/footer.html' %}
 

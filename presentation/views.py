@@ -1,8 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-#from .model import Receita
+from .models import Pizza
 
 def index(request):
     return render(request, 'index.html')
 
 def pizza(request):
-    return render(request, 'pizza.html')
+    
+    pizzas = Pizza.objects.all()
+
+    dados = {
+        'pizzas' : pizzas
+    }
+
+    return render(request, 'pizza.html', dados)
