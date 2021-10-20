@@ -1,49 +1,68 @@
 {% load static %}
 
 <header>
-    <div class="faixa1">
-        <h1 class="logo">Guilherme Vargas</h1>
-        <ul class="redes-sociais">
-            <li><a href="https://www.linkedin.com/in/guivargas95/" target="_blank" rel="external"><img
-                        src="{% static 'img/linkedin.png' %}" alt="Ícone Linkedin"></a></li>
-            <li><a href="https://github.com/guivargas95" target="_blank" rel="external"><img
-                        src="{% static 'img/github.png' %}" alt="Ícone Github"></a></li>
-            <li><a href="https://www.facebook.com/guilherme.vargas.52" target="_blank" rel="external"><img
-                        src="{% static 'img/fb-2.png' %}" alt="Ícone Facebook"></a></li>
-            <li><a href="https://www.instagram.com/guii.vargas/" target="_blank" rel="external"><img
-                        src="{% static 'img/instagram.png' %}" alt="Ícone Instagram"></a></li>
-        </ul>
-    </div>
-    <div class="faixa2">
-        <nav>
-            <ul>
-                <li>Início</li>
-                <li>Contato</li>
-            </ul>
-        </nav>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light faixa1 fixed-top">
+        <div class="container-fluid d-flex ">
+            <a class="navbar-brand logo " href="#">Guilherme Vargas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <ul class="navbar-nav teste">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">INÍCIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/guii.vargas/" target="_blank"
+                            rel="external"><img src="{% static 'img/linkedin.png' %}" alt="Ícone Linkedin"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/guii.vargas/" target="_blank"
+                            rel="external"><img src="{% static 'img/github.png' %}" alt="Ícone Github"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/guii.vargas/" target="_blank"
+                            rel="external"><img src="{% static 'img/instagram.png' %}" alt="Ícone Instagram"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
-<div class="banner">
-    <div class="habilidades container">
-        <div>
-            <img src="{% static 'img/cube1.png' %}" alt="">
-            <h1>Orientação a objetos</h1>
-            <p>Códigos organizados e estruturados</p>
+<section>
+    <div id="carouselExampleIndicators" class="carousel slide carousel-height" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
-        <div>
-            <img src="{% static 'img/cube2.png' %}" alt="">
-            <h1>Banco de dados</h1>
-            <p>Eficiência e segurança com manipulação de dados</p>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'img/banner.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/banner2.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/banner4.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
+            </div>
         </div>
-        <div>
-            <img src="{% static 'img/cube1.png' %}" alt="">
-            <h1>Criação de sites</h1>
-            <p>Sites elegantes com foco em design e experiência do usuário</p>
-        </div>
-        <div>
-            <img src="{% static 'img/cube2.png' %}" alt="">
-            <h1>Recursos javascript</h1>
-            <p>Conteúdos animados e interessantes</p>
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-</div>
+</section>
