@@ -8,16 +8,16 @@
         <div class="row justify-content-center">
             {% if noticias %}
             {% for noticia in noticias %}
-            <div class="card p-0 m-4 col-12 col-md-2" style="width: 18rem;">
+            <div class="card p-0 m-4 col-12 col-md-2 img-format" style="width: 18rem;">
+                {% if noticia.foto_noticia == '' %}
+                <img src="{% static 'img/sem_imagem.png' %}" class="card-img-top card-posicao-imagem" alt="...">
+                {% else %}
                 <img src="{{ noticia.foto_noticia.url }}" class="card-img-top card-posicao-imagem" alt="...">
+                {% endif %}
                 <div class="card-body">
-                    {% if noticia.foto_noticia == null %}
-                    <h5 class="card-title">{% static 'img/sem_imagem.png' %}</h5>
-                    {% else %}
                     <h5 class="card-title">{{ noticia.titulo_noticia }}</h5>
-                    {% endif %}
                     <p class="card-text">{{ noticia.previa_noticia }}</p>
-                    <a href="#" class="btn btn-primary">Ver Notícia!</a>
+                    <a href="{% url 'noticia' noticia.id %}" class="btn btn-primary m-2">Ver Notícia!</a>
                 </div>
             </div>
             {% endfor %}
@@ -34,4 +34,3 @@
 </html>
 
 {% endblock %}
-

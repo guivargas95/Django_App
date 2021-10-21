@@ -207,36 +207,9 @@ footer p {
     }
 }
 
-.receipe-slider {
-    position: relative;
-    z-index: 1; }
-    .receipe-slider .owl-prev,
-    .receipe-slider .owl-next {
-      background-color: transparent;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      color: #ffffff;
-      top: 50%;
-      margin-top: -20px;
-      left: 4%;
-      position: absolute;
-      z-index: 10;
-      text-align: center;
-      font-size: 16px;
-      font-weight: 600;
-      opacity: 0;
-      visibility: hidden;
-      -webkit-transition-duration: 500ms;
-      transition-duration: 500ms;
-      border-bottom: 3px solid #1c8314; }
-      @media only screen and (max-width: 767px) {
-        .receipe-slider .owl-prev,
-        .receipe-slider .owl-next {
-          font-size: 14px; } }
-    .receipe-slider .owl-next {
-      left: auto;
-      right: 4%; }
-    .receipe-slider:hover .owl-prev, .receipe-slider:hover .owl-next {
-      opacity: 1;
-      visibility: visible; }
+.img-format img {
+    width: 100%;
+    max-width: 500px;
+    max-height: 150px;
+}
+
