@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/header.html' %}
+
+<!-- Banner Noticia -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="receipe-slider owl-carousel">
+                {% if receita.foto_receita == ''%}
+                <img src="{% static 'img/sem_foto.png' %}">
+                {% else %}
+                <img src="{{ noticia.foto_noticia.url }}" alt="">
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

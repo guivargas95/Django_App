@@ -6,62 +6,26 @@
 <main>
     <div class="container">
         <div class="row justify-content-center">
+            {% if noticias %}
+            {% for noticia in noticias %}
             <div class="card p-0 m-4 col-12 col-md-2" style="width: 18rem;">
-                <img src="{% static 'img/carro.jpg'%}" class="card-img-top card-posicao-imagem" alt="...">
+                <img src="{{ noticia.foto_noticia.url }}" class="card-img-top card-posicao-imagem" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    {% if noticia.foto_noticia == null %}
+                    <h5 class="card-title">{% static 'img/sem_imagem.png' %}</h5>
+                    {% else %}
+                    <h5 class="card-title">{{ noticia.titulo_noticia }}</h5>
+                    {% endif %}
+                    <p class="card-text">{{ noticia.previa_noticia }}</p>
+                    <a href="#" class="btn btn-primary">Ver Notícia!</a>
                 </div>
             </div>
-            <div class="card p-0 m-4 col-12 col-md-2" style="width: 18rem;">
-                <img src="{% static 'img/carro.jpg'%}" class="card-img-top deslocar" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card p-0 m-4 col-12 col-md-2" style="width: 18rem;">
-                <img src="{% static 'img/carro.jpg'%}" class="card-img-top deslocar" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card p-0 m-4 col-12 col-md-2" style="width: 18rem;">
-                <img src="{% static 'img/carro.jpg'%}" class="card-img-top card-posicao-imagem" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card p-0 m-4 col-12 col-md-2" style="width: 18rem;">
-                <img src="{% static 'img/carro.jpg'%}" class="card-img-top card-posicao-imagem" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card p-0 m-4 col-12 col-md-2" style="width: 18rem;">
-                <img src="{% static 'img/carro.jpg'%}" class="card-img-top card-posicao-imagem" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary ">Go somewhere</a>
-                </div>
-            </div>
+            {% endfor %}
+            {% else %}
+            {% endif %}
         </div>
     </div>
+
 
     {% include 'partials/footer.html' %}
 </main>
@@ -70,3 +34,4 @@
 </html>
 
 {% endblock %}
+

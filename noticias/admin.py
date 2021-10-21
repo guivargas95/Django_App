@@ -9,3 +9,4 @@ class ListandoNoticias(admin.ModelAdmin):
 
 
 admin.site.register(Noticias, ListandoNoticias)
+
