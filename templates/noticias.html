@@ -4,6 +4,10 @@
 
 {% include 'partials/header.html' %}
 <main>
+    <nav class="nav nav-pills flex-column flex-sm-row m-3 p-1 nav-hover">
+        <a class="flex-sm-fill text-sm-center nav-link ms-2 active" href="#">Criar Notícia</a>
+      </nav>
+
     <div class="container">
         <div class="row justify-content-center">
             {% if noticias %}
@@ -14,10 +18,10 @@
                 {% else %}
                 <img src="{{ noticia.foto_noticia.url }}" class="card-img-top card-posicao-imagem" alt="...">
                 {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ noticia.titulo_noticia }}</h5>
+                <div class="card-body text-center">
+                    <h5 class="card-title fs-4">{{ noticia.titulo_noticia }}</h5>
                     <p class="card-text">{{ noticia.previa_noticia }}</p>
-                    <a href="{% url 'noticia' noticia.id %}" class="btn btn-primary m-2">Ver Notícia!</a>
+                    <a href="{% url 'noticia' noticia.id %}" class="btn btn-primary m-2 mt-4">Ver Notícia!</a>
                 </div>
             </div>
             {% endfor %}

@@ -4,11 +4,17 @@
 
 {% include 'partials/header.html' %}
 
+<nav class="nav nav-pills flex-column flex-sm-row m-3 p-1 nav-hover">
+    <a class="flex-sm-fill text-sm-center nav-link ms-2 active" aria-current="page"
+        href="{% url 'noticias' %}">Noticias</a>
+    <a class="flex-sm-fill text-sm-center nav-link ms-2 active" href="#">Criar Notícia</a>
+</nav>
+
 <!-- Banner Noticia -->
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="receipe-slider owl-carousel">
+            <div class="receipe-slider owl-carousel img-size">
                 {% if noticia.foto_noticia == '' %}
                 <img src="{% static 'img/sem_imagem.png' %}" class="img-fluid" alt="Responsive image">
                 {% else %}
@@ -18,5 +24,13 @@
         </div>
     </div>
 </div>
+
+<!-- Conteúdo Noticia -->
+<div class="conteudo-noticia">
+    <h1>{{ noticia.titulo_noticia }}</h1>
+    <p>{{ noticia.texto_noticia }}</p>
+</div>
+
+{% include 'partials/footer.html' %}
 
 {% endblock %}
