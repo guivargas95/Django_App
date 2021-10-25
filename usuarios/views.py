@@ -31,7 +31,7 @@ def cadastro(request):
         messages.success(request, 'Usuário cadastrado com sucesso! test')
         return redirect('login')
     else:
-        return render(request, 'usuarios\cadastro.html')
+        return render(request, 'cadastro.html')
 
 def login(request):
     '''Realiza o login de uma pessoa no sistema'''
@@ -53,23 +53,12 @@ def login(request):
             
         
 
-    return render(request, 'usuarios\login.html')
+    return render(request, 'login.html')
 
 def logout(request):
     '''Realiza o logout de uma pessoa no sistema'''
     auth.logout(request)
     return redirect('index')
 
-def dashboard(request):
-    '''Mostra o dashboard da pessoa logada no sistema'''
-    if request.user.is_authenticated:
-        id = request.user.id
-        receitas = Receita.objects.order_by('-data_receita').filter(pessoa=id)
 
-        dados = {
-            'receitas' : receitas
-        }
-        return render(request, 'usuarios\dashboard.html', dados)
-    else:
-        return redirect('index')
 

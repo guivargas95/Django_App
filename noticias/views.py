@@ -21,3 +21,16 @@ def noticia(request, noticia_id):
         'noticia' : noticia
     }
     return render(request, 'noticia.html', noticia_a_exibir)
+
+def dashboard(request):
+    '''Mostra o dashboard da pessoa logada no sistema'''
+    if request.user.is_authenticated:
+        id = request.user.id
+        receitas = Noticias.objects.order_by('-data_receita').filter(pessoa=id)
+
+        dados = {
+            'receitas' : receitas
+        }
+        return render(request, 'usuarios\dashboard.html', dados)
+    else:
+        return redirect('index')

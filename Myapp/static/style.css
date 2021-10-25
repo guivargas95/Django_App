@@ -92,6 +92,22 @@ footer p {
     
 }
 
+/*  Página de criação de usuário */
+
+.corrige-titulo h2 {
+    text-align: center;
+    font-size: 30px;
+    font-style: inherit;
+    margin-top: 2em;
+}
+
+.corrige-botao {
+    margin-top: 3em;
+}
+
+/*  Página de Login de usuário */
+
+
 
 /*  Ajustes de resolução */
 
