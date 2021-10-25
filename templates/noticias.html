@@ -14,14 +14,15 @@
             {% for noticia in noticias %}
             <div class="card p-0 m-4 col-12 col-md-2 img-format" style="width: 18rem;">
                 {% if noticia.foto_noticia == '' %}
-                <img src="{% static 'img/sem_imagem.png' %}" class="card-img-top card-posicao-imagem" alt="...">
+                <a href="{% url 'noticia' noticia.id %}"><img src="{% static 'img/sem_imagem.png' %}" class="card-img-top card-posicao-imagem" alt="..."></a>
                 {% else %}
-                <img src="{{ noticia.foto_noticia.url }}" class="card-img-top card-posicao-imagem" alt="...">
+                <a href="{% url 'noticia' noticia.id %}"><img src="{{ noticia.foto_noticia.url }}" class="card-img-top card-posicao-imagem" alt="..."></a>
                 {% endif %}
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-4">{{ noticia.titulo_noticia }}</h5>
+                    <a href="{% url 'noticia' noticia.id %}"><h5 class="card-title fs-4">{{ noticia.titulo_noticia }}</h5></a>
                     <p class="card-text">{{ noticia.previa_noticia }}</p>
-                    <a href="{% url 'noticia' noticia.id %}" class="btn btn-primary m-2 mt-4">Ver Notícia!</a>
+                    <a href="#" class="btn btn-warning m-2 mt-4">Editar</a>
+                    <a href="#" class="btn btn-danger m-2 mt-4">Excluir</a>
                 </div>
             </div>
             {% endfor %}
