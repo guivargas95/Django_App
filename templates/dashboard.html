@@ -3,14 +3,39 @@
 {% block content %}
 
 {% include 'partials/header.html' %}
-
-
 <main>
+    {% include 'partials/_menu_noticia.html' %}
 
-
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if noticias %}
+            {% for noticia in noticias %}
+            <div class="card p-0 m-4 col-12 col-md-2 img-format" style="width: 18rem;">
+                {% if noticia.foto_noticia == '' %}
+                <a href="{% url 'noticia' noticia.id %}"><img src="{% static 'img/sem_imagem.png' %}" class="card-img-top card-posicao-imagem" alt="..."></a>
+                {% else %}
+                <a href="{% url 'noticia' noticia.id %}"><img src="{{ noticia.foto_noticia.url }}" class="card-img-top card-posicao-imagem" alt="..."></a>
+                {% endif %}
+                <div class="card-body text-center">
+                    <a href="{% url 'noticia' noticia.id %}"><h5 class="card-title fs-4">{{ noticia.titulo_noticia }}</h5></a>
+                    <p class="card-text">{{ noticia.previa_noticia }}</p>
+                    <a href="#" class="btn btn-warning m-2 mt-4">Editar</a>
+                    <a href="{% url 'deleta_noticia' noticia.id %}" class="btn btn-danger m-2 mt-4">Excluir</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h1>Você não possui nenhuma notícia cadastrada :( </h1>
+            <a href="#" class="btn btn-success ajustar-footer">Criar notícia</a>
+            {% endif %}
+        </div>
+    </div>
 
 
     {% include 'partials/footer.html' %}
 </main>
+</body>
+
+</html>
 
 {% endblock %}
