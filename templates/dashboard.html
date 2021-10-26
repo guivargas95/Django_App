@@ -19,7 +19,7 @@
                 <div class="card-body text-center">
                     <a href="{% url 'noticia' noticia.id %}"><h5 class="card-title fs-4">{{ noticia.titulo_noticia }}</h5></a>
                     <p class="card-text">{{ noticia.previa_noticia }}</p>
-                    <a href="#" class="btn btn-warning m-2 mt-4">Editar</a>
+                    <a href="{% url 'edita_noticia' noticia.id %}" class="btn btn-warning m-2 mt-4">Editar</a>
                     <a href="{% url 'deleta_noticia' noticia.id %}" class="btn btn-danger m-2 mt-4">Excluir</a>
                 </div>
             </div>

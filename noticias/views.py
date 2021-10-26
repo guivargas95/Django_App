@@ -1,6 +1,7 @@
 from .models import Noticias
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
+from django.contrib import auth, messages
 
 
 def noticias(request, ):
@@ -34,23 +35,31 @@ def dashboard(request):
         }
         return render(request, 'dashboard.html', dados)
     else:
+        messages.error(request, 'Você precisa estar autenticado para visualizar seu dashboard!')
         return redirect('login')
 
 def cria_noticia(request):
     '''Cria uma nova noticia e adiciona no sistema'''
-    if request.method == 'POST':
-        titulo_noticia = request.POST['titulo_noticia']
-        texto_noticia = request.POST['texto_noticia']
-        previa_noticia = request.POST['previa_noticia']
-        categoria_noticia = request.POST['categoria_noticia']
-        foto_noticia = request.FILES['foto_noticia']
-        user = get_object_or_404(User, pk=request.user.id)
-        noticia = Noticias.objects.create(pessoa=user, titulo_noticia=titulo_noticia, texto_noticia=texto_noticia, previa_noticia=previa_noticia, categoria_noticia=categoria_noticia, 
-         foto_noticia=foto_noticia )
-        noticia.save()
-        return redirect('dashboard')
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            titulo_noticia = request.POST['titulo_noticia']
+            texto_noticia = request.POST['texto_noticia']
+            previa_noticia = request.POST['previa_noticia']
+            categoria_noticia = request.POST['categoria_noticia']
+            if 'foto_noticia' in request.FILES:
+                foto_noticia = request.FILES['foto_noticia']
+            else:
+                foto_noticia = ''
+            user = get_object_or_404(User, pk=request.user.id)
+            noticia = Noticias.objects.create(pessoa=user, titulo_noticia=titulo_noticia, texto_noticia=texto_noticia, previa_noticia=previa_noticia, categoria_noticia=categoria_noticia, 
+            foto_noticia=foto_noticia )
+            noticia.save()
+            return redirect('dashboard')
+        else:
+            return render(request, 'cria_noticia.html')
     else:
-        return render(request, 'cria_noticia.html')
+        messages.error(request, 'Você precisa estar autenticado para criar notícias!')
+        return redirect('login')
 
 def deleta_noticia(request, noticia_id):
     '''Exclui a noticia selecionada'''
@@ -58,24 +67,22 @@ def deleta_noticia(request, noticia_id):
     noticia.delete()
     return redirect('dashboard')
 
-def edita_receita(request, receita_id):
-    '''Edita a receita selecionada'''
-    receita = get_object_or_404(Receita, pk=receita_id)
-    receita_a_editar = {'receita': receita}
-    return render(request, 'receitas/edita_receita.html', receita_a_editar)
+def edita_noticia(request, noticia_id):
+    '''Edita a noticia selecionada'''
+    noticia = get_object_or_404(Noticias, pk=noticia_id)
+    noticia_a_editar = {'noticia': noticia}
+    return render(request, 'edita_noticia.html', noticia_a_editar)
 
-def atualiza_receita(request):
-    '''Atualiza a receita selecionada'''
+def atualiza_noticia(request):
+    '''Atualiza a noticia selecionada'''
     if request.method == 'POST':
-        receita_id = request.POST['receita_id']
-        r = Receita.objects.get(pk=receita_id)
-        r.nome_receita = request.POST['nome_receita']
-        r.ingredientes = request.POST['ingredientes']
-        r.modo_preparo = request.POST['modo_preparo']
-        r.tempo_preparo = request.POST['tempo_preparo']
-        r.rendimento = request.POST['rendimento']
-        r.categoria = request.POST['categoria']
-        if 'foto_receita' in request.FILES:
-            r.foto_receita = request.FILES['foto_receita']
-        r.save()
+        noticia_id = request.POST['noticia_id']
+        n = Noticias.objects.get(pk=noticia_id)
+        n.titulo_noticia = request.POST['titulo_noticia']
+        n.texto_noticia = request.POST['texto_noticia']
+        n.previa_noticia = request.POST['previa_noticia']
+        n.categoria_noticia = request.POST['categoria_noticia']
+        if 'foto_noticia' in request.FILES:
+            n.foto_noticia = request.FILES['foto_noticia']
+        n.save()
         return redirect('dashboard')
