@@ -4,11 +4,7 @@
 
 {% include 'partials/header.html' %}
 
-<nav class="nav nav-pills flex-column flex-sm-row m-3 p-1 nav-hover">
-    <a class="flex-sm-fill text-sm-center nav-link ms-2 active" aria-current="page"
-        href="{% url 'noticias' %}">Noticias</a>
-    <a class="flex-sm-fill text-sm-center nav-link ms-2 active" href="#">Criar Notícia</a>
-</nav>
+{% include 'partials/_menu_noticia.html' %}
 
 <!-- Banner Noticia -->
 <div class="container">
