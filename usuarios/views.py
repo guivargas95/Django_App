@@ -48,7 +48,7 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 print('login realizado com sucesso')
-                return redirect('dashboard')
+                return redirect('index')
 
             
         

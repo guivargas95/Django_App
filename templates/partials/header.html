@@ -10,6 +10,7 @@
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                 <ul class="navbar-nav teste">
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}">INÍCIO</a>
                     </li>
@@ -17,17 +18,22 @@
                         <a class="nav-link" href="#">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/guii.vargas/" target="_blank"
-                            rel="external"><img src="{% static 'img/linkedin.png' %}" alt="Ícone Linkedin"></a>
+                        <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/guii.vargas/" target="_blank"
-                            rel="external"><img src="{% static 'img/github.png' %}" alt="Ícone Github"></a>
+                        <a class="nav-link" href="#">Bem vindo, {{ user.username }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">INÍCIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/guii.vargas/" target="_blank"
-                            rel="external"><img src="{% static 'img/instagram.png' %}" alt="Ícone Instagram"></a>
+                        <a class="nav-link" href="#">CONTATO</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
