@@ -86,3 +86,40 @@ def atualiza_noticia(request):
             n.foto_noticia = request.FILES['foto_noticia']
         n.save()
         return redirect('dashboard')
+
+def buscar_dashboard(request):
+    '''Realiza busca das noticias do usuario logado pelo título''' 
+
+    lista_noticias = Noticias.objects.filter(pessoa=User.username)
+
+    if 'buscar' in request.GET:
+        nome_a_buscar = request.GET['buscar']
+        if nome_a_buscar != '':
+            lista_noticias = lista_noticias.filter(titulo_noticia__contains=nome_a_buscar)
+        else:
+            lista_noticias = lista_noticias.objects.order_by('-data_noticia').filter(publicada=True)
+
+
+    dados = {
+        'noticias' : lista_noticias
+    }
+
+    return render(request, 'buscar.html', dados)
+
+def buscar(request):
+    '''Realiza busca de todas as noticias pelo título''' 
+
+    lista_noticias = Noticias.objects.all()
+
+    if 'buscar' in request.GET:
+        nome_a_buscar = request.GET['buscar']
+        if nome_a_buscar != '':
+            lista_noticias = lista_noticias.filter(titulo_noticia__contains=nome_a_buscar)
+        else:
+            lista_noticias = lista_noticias.objects.order_by('-data_noticia')
+    dados = {
+        'noticias' : lista_noticias
+    }
+
+    return render(request, 'buscar.html', dados)
+
