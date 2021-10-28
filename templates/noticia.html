@@ -6,7 +6,7 @@
 
 {% include 'partials/_menu_noticia.html' %}
 
-<!-- Banner Noticia -->
+<!-- Conteudo da notícia -->
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -19,14 +19,11 @@
             </div>
         </div>
     </div>
+    <div class="text-center">
+        <h1 class="h2 mt-3 mb-3">{{ noticia.titulo_noticia }}</h1>
+        <p class="mb-3 mt-3">{{ noticia.texto_noticia }}</p>
+    </div>
 </div>
-
-<!-- Conteúdo Noticia -->
-<div class="conteudo-noticia">
-    <h1>{{ noticia.titulo_noticia }}</h1>
-    <p>{{ noticia.texto_noticia }}</p>
-</div>
-
 {% include 'partials/footer.html' %}
 
 {% endblock %}
