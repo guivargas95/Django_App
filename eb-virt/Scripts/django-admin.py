@@ -1,4 +1,4 @@
-#!C:\Users\guilherme.vargas\OneDrive - Proeza Group\Desktop\Portfolio DJANGO\Django_App\eb-virt\Scripts\python.exe
+#!c:\aws django app\django_app\eb-virt\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
